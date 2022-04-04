@@ -1,0 +1,137 @@
+body{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+header{
+    width: 100%;
+    background-color: rgb(119, 105, 207);
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+main{
+    width: 100%;
+    background-color: darkslateblue;
+}
+main section{
+    background-color: darkslateblue;
+    padding: 5px;
+}
+section button{
+    position: relative;
+    bottom: 30px;
+    left: 250px;
+    padding: 5px;
+}
+footer{
+    width: 100%;
+    background-color: rgb(148, 140, 199);
+    display: flex;
+    justify-content: space-between;
+}
+footer img{
+    width: 55px;
+    margin: 5px;
+}
+p{
+    margin: 3px;
+}
+.sep{
+    width: 100%;
+    border: 1px solid black;
+}
+header img{
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    
+}
+header h2{
+    width: 80%;
+}
+.menu{
+    background-color: rgb(90, 90, 90);
+    width: 100%;
+    padding: 5px;
+    position: absolute;
+    top: 600px;
+    height: 300px;
+}
+.menu > div{
+    width: 100%;
+    border-bottom: 1px solid black;
+    padding-bottom: 4px;
+}
+.menu > div img{
+    width: 23px;
+}
+#x{
+    width: 30px;
+    position: absolute;
+    right: 5%;
+    top: 3px;
+}
+.hided{
+    display: none;
+}
+.callendar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 560px;
+    background-color: rgb(101, 101, 190);
+    
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.callendar div{
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+}
+.callendar td{
+    border: 1px solid black;
+}
+.callendar table{
+    width: 90%;
+    height: 50%;
+    font-size: 1.4em;
+}
+.tests_callendar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 560px;
+    background-color: rgb(101, 101, 190);
+    padding: 5px;
+    box-sizing: border-box;
+
+}
+.tests_callendar > div{
+    display: flex;
+    justify-content: space-between;
+}
+#weeks{
+    border: 3px solid black;
+    height: 50px;
+    font-size: 1.2em;
+    padding: 5px;
+}
+.day_div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(170, 162, 162);
+}
+.day_div > p{
+    background-color: gray;
+}
+.profil{
+    border: 2px solid black;
+    border-radius: 50%;
+}
