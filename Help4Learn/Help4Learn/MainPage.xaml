@@ -1,25 +1,70 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Help4Learn"
              x:Class="Help4Learn.MainPage">
-
-    <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="85"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Frame BackgroundColor="#2196F3" Padding="5" CornerRadius="0"
+               Grid.Row="0" Grid.Column="0" >
+            <AbsoluteLayout>
+                <Label Text="Jan Nowak" TextColor="White" FontSize="30"
+                       AbsoluteLayout.LayoutBounds="10, 5, AutoSize, AutoSize"/>
+                <ImageButton Source="{local:ImageResource Help4Learn.img.profil.png}"
+                       HeightRequest="60" WidthRequest="60" Padding="2" 
+                       AbsoluteLayout.LayoutBounds="340, -5, AutoSize, AutoSize"
+                       Clicked="imageSource_Clicked"/>
+            </AbsoluteLayout>
         </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-        <Button x:Name="btn_test" Clicked="btn_test_Clicked" Text="Witam"></Button>
-    </StackLayout>
+        <Frame BackgroundColor="LightBlue" Padding="15" BorderColor="Black" 
+               Margin="5, 4, 5, 2" Grid.Row="1" Grid.Column="0">
+            <Label Text="Siemka naklejka" FontSize="25"/>
+        </Frame>
+        <Frame BackgroundColor="LightBlue" Padding="15" BorderColor="Black" 
+                Margin="5, 4, 5, 2" Grid.Row="2" Grid.Column="0" >
+            <Label Text="Siemka naklejka" FontSize="25"/>
+        </Frame>
+        <Frame BackgroundColor="LightBlue" Padding="15" BorderColor="Black" 
+                Margin="5, 4, 5, 2" Grid.Row="3" Grid.Column="0">
+            <Label Text="Siemka naklejka" FontSize="25"/>
+        </Frame>
+        <Grid Grid.Row="4" Grid.Column="0" Margin="5, 0, 5, 5" BackgroundColor="LightBlue">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
+            <ImageButton Source="{local:ImageResource Help4Learn.img.home.png}" 
+                       Grid.Column="0" Grid.Row="0" BackgroundColor="Transparent"
+                       HeightRequest="60" WidthRequest="60" />
+            <ImageButton Source="{local:ImageResource Help4Learn.img.learning.png}" 
+                       Grid.Column="1" Grid.Row="0" BackgroundColor="Transparent"
+                       HeightRequest="60" WidthRequest="60" />
+            <ImageButton Source="{local:ImageResource Help4Learn.img.callendar.png}" 
+                       Grid.Column="2" Grid.Row="0" BackgroundColor="Transparent"
+                       HeightRequest="60" WidthRequest="60" />
+            <ImageButton Source="{local:ImageResource Help4Learn.img.tasks.png}" 
+                       Grid.Column="3" Grid.Row="0" BackgroundColor="Transparent"
+                       HeightRequest="60" WidthRequest="60" />
+            <ImageButton Source="{local:ImageResource Help4Learn.img.settings.png}" 
+                       Grid.Column="4" Grid.Row="0" BackgroundColor="Transparent"
+                       HeightRequest="60" WidthRequest="60" />
+
+        </Grid>
+    </Grid>
 </ContentPage>

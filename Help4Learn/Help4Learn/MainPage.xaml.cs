@@ -15,9 +15,10 @@ namespace Help4Learn
             InitializeComponent();
         }
 
-        private async void btn_test_Clicked(object sender, EventArgs e)
+        private async void imageSource_Clicked(object sender, EventArgs e)
         {
-            await DisplayAlert("LOL", "Udało się ziomuś", "XD");
+            string img = "https://pl.freepik.com/wektory/biznes https://pl.freepik.com/wektory/kalendarz https://www.flaticon.com/free-icons/home-button https://pl.freepik.com/wektory/biznes";
+            await DisplayAlert("Linki do zdjęć w aplikacji", img, "OK");
         }
     }
 }

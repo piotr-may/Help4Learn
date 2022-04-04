@@ -11,7 +11,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="img\callendar.png" />
+    <None Remove="img\home.png" />
+    <None Remove="img\learning.png" />
+    <None Remove="img\profil.png" />
+    <None Remove="img\settings.png" />
+    <None Remove="img\tasks.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="img\callendar.png" />
+    <EmbeddedResource Include="img\home.png" />
+    <EmbeddedResource Include="img\learning.png" />
+    <EmbeddedResource Include="img\profil.png" />
+    <EmbeddedResource Include="img\settings.png" />
+    <EmbeddedResource Include="img\tasks.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="NewFolder\" />
   </ItemGroup>
 </Project>
