@@ -25,19 +25,35 @@
                        Clicked="imageSource_Clicked"/>
             </AbsoluteLayout>
         </Frame>
-        <Frame BackgroundColor="LightBlue" Padding="15" BorderColor="Black" 
+        <Frame BackgroundColor="#83D7F2" Padding="15" BorderColor="Black" 
                Margin="5, 4, 5, 2" Grid.Row="1" Grid.Column="0">
-            <Label Text="Siemka naklejka" FontSize="25"/>
+            <Label Text="Najbliższe sprawdziany" FontSize="25"/>
         </Frame>
-        <Frame BackgroundColor="LightBlue" Padding="15" BorderColor="Black" 
+        <Frame BackgroundColor="#83D7F2" Padding="15" BorderColor="Black" 
                 Margin="5, 4, 5, 2" Grid.Row="2" Grid.Column="0" >
-            <Label Text="Siemka naklejka" FontSize="25"/>
+            <Label Text="Najbiższe zadania" FontSize="25"/>
         </Frame>
-        <Frame BackgroundColor="LightBlue" Padding="15" BorderColor="Black" 
+        <Frame BackgroundColor="#83D7F2" Padding="15" BorderColor="Black" 
                 Margin="5, 4, 5, 2" Grid.Row="3" Grid.Column="0">
-            <Label Text="Siemka naklejka" FontSize="25"/>
+            <Label Text="Akutalna aktywność" FontSize="25"/>
         </Frame>
-        <Grid Grid.Row="4" Grid.Column="0" Margin="5, 0, 5, 5" BackgroundColor="LightBlue">
+
+        <Grid IsVisible="False" x:Name="Callendar" Grid.RowSpan="4" 
+              BackgroundColor="Red" Grid.Row="1">
+            <Label Text="Callendar" />
+        </Grid>
+
+        <Grid IsVisible="False" x:Name="Exams" Grid.RowSpan="4" 
+              BackgroundColor="DarkBlue" Grid.Row="1">
+            <Label Text="Exams" />
+        </Grid>
+
+        <Grid IsVisible="False" x:Name="Activity" Grid.RowSpan="4" 
+              BackgroundColor="Gray" Grid.Row="1" >
+            <Label Text="Activity" />
+        </Grid>
+
+        <Grid Grid.Row="4" Grid.Column="0" Margin="5, 0, 5, 5" BackgroundColor="#5DC7E9">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
@@ -48,22 +64,26 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
+            
             <ImageButton Source="{local:ImageResource Help4Learn.img.home.png}" 
                        Grid.Column="0" Grid.Row="0" BackgroundColor="Transparent"
-                       HeightRequest="60" WidthRequest="60" />
+                       HeightRequest="60" WidthRequest="60" Margin="7" 
+                        Clicked="hideAll"  />
             <ImageButton Source="{local:ImageResource Help4Learn.img.learning.png}" 
                        Grid.Column="1" Grid.Row="0" BackgroundColor="Transparent"
-                       HeightRequest="60" WidthRequest="60" />
+                       HeightRequest="60" WidthRequest="60"  Margin="7"
+                        Clicked="examsIcon_Clicked" />
             <ImageButton Source="{local:ImageResource Help4Learn.img.callendar.png}" 
                        Grid.Column="2" Grid.Row="0" BackgroundColor="Transparent"
-                       HeightRequest="60" WidthRequest="60" />
+                       HeightRequest="60" WidthRequest="60"  Margin="7"
+                       Clicked="callendarIcon_Clicked" />
             <ImageButton Source="{local:ImageResource Help4Learn.img.tasks.png}" 
                        Grid.Column="3" Grid.Row="0" BackgroundColor="Transparent"
-                       HeightRequest="60" WidthRequest="60" />
+                       HeightRequest="60" WidthRequest="60"  Margin="7"
+                       Clicked="activitiesIcon_Clicked" />
             <ImageButton Source="{local:ImageResource Help4Learn.img.settings.png}" 
                        Grid.Column="4" Grid.Row="0" BackgroundColor="Transparent"
-                       HeightRequest="60" WidthRequest="60" />
+                       HeightRequest="60" WidthRequest="60"  Margin="7"/>
 
         </Grid>
     </Grid>

@@ -20,5 +20,34 @@ namespace Help4Learn
             string img = "https://pl.freepik.com/wektory/biznes https://pl.freepik.com/wektory/kalendarz https://www.flaticon.com/free-icons/home-button https://pl.freepik.com/wektory/biznes";
             await DisplayAlert("Linki do zdjęć w aplikacji", img, "OK");
         }
+
+        private void callendarIcon_Clicked(object sender, EventArgs e)
+        {
+            bool accualState = Callendar.IsVisible;
+            hideAll(null, null);
+            Callendar.IsVisible = accualState ? false : true;
+        }
+
+        private void examsIcon_Clicked(object sender, EventArgs e)
+        {
+            bool accualState = Exams.IsVisible;
+            hideAll(null, null);
+            Exams.IsVisible = accualState ? false : true;
+        }
+
+        private void activitiesIcon_Clicked(object sender, EventArgs e)
+        {
+            bool accualState = Activity.IsVisible;
+            hideAll(null, null);
+            Activity.IsVisible = accualState ? false : true;
+        }
+
+        private void hideAll(object sender, EventArgs e)
+        {
+            Activity.IsVisible = false;
+            Exams.IsVisible = false;
+            Callendar.IsVisible = false;
+        }
+
     }
 }
