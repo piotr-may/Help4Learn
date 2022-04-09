@@ -38,19 +38,152 @@
             <Label Text="Akutalna aktywność" FontSize="25"/>
         </Frame>
 
-        <Grid IsVisible="False" x:Name="Callendar" Grid.RowSpan="4" 
-              BackgroundColor="Red" Grid.Row="1">
-            <Label Text="Callendar" />
+        <Grid IsVisible="False" x:Name="Callendar" Grid.RowSpan="3" 
+              BackgroundColor="#83D7F2" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Text="&lt;" Grid.Row="0" Grid.Column="0" />
+            <Label Text="Month" FontSize="30" Grid.Row="0" Grid.Column="1"
+                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+            <Button Text="&gt;" Grid.Row="0" Grid.Column="2" />
+
+            <Rectangle Grid.Row="1" BackgroundColor="Red" Grid.ColumnSpan="3"
+                       Margin="20"/>
+        </Grid>
+            
+        <Grid IsVisible="False" x:Name="Exams" Grid.RowSpan="3" 
+              Grid.Row="1" BackgroundColor="#83D7F2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Text="&lt;" Grid.Row="0" Grid.Column="0" />
+            <FlexLayout Grid.Row="0" Grid.Column="1">
+                <Button FontSize="19" Text="10"/>
+                <Button FontSize="19" Text="11"/>
+                <Button FontSize="19" Text="12"/>
+                <Button FontSize="19" Text="13"/>
+                <Button FontSize="19" Text="14"/>
+                <Button FontSize="19" Text="15"/>
+                <Button FontSize="19" Text="16"/>
+            </FlexLayout>
+            <Button Text="&gt;" Grid.Row="0" Grid.Column="2" />
+            <ScrollView Grid.Row="1" Grid.ColumnSpan="3">
+                <StackLayout>
+                    <StackLayout BackgroundColor="Gray" Margin="5" Padding="5">
+                        <Label FontSize="24" Text="Poniedziałek"/>
+                        <StackLayout  BackgroundColor="DarkGray">
+                            <Label FontSize="20" Text="Matematyka - funkcje"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout BackgroundColor="Gray" Margin="5" Padding="5">
+                        <Label FontSize="24" Text="Wtorek"/>
+                        <StackLayout BackgroundColor="DarkGray">
+                            <Label FontSize="20" Text="Matematyka - funkcje"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout BackgroundColor="Gray" Margin="5" Padding="5">
+                        <Label FontSize="24" Text="Środa"/>
+                        <StackLayout BackgroundColor="DarkGray">
+                            <Label FontSize="20" Text="Matematyka - funkcje"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout BackgroundColor="Gray" Margin="5" Padding="5">
+                        <Label FontSize="24" Text="Czwartek"/>
+                        <StackLayout BackgroundColor="DarkGray">
+                            <Label FontSize="20" Text="Matematyka - funkcje"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout BackgroundColor="Gray" Margin="5" Padding="5">
+                        <Label FontSize="24" Text="Piątek"/>
+                        <StackLayout BackgroundColor="DarkGray">
+                            <Label FontSize="20" Text="Matematyka - funkcje"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout BackgroundColor="Gray" Margin="5" Padding="5">
+                        <Label FontSize="24" Text="Sobota"/>
+                        <StackLayout BackgroundColor="DarkGray">
+                            <Label FontSize="20" Text="Matematyka - funkcje"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout BackgroundColor="Gray" Margin="5" Padding="5">
+                        <Label FontSize="22" Text="Niedziala"/>
+                        <StackLayout BackgroundColor="DarkGray">
+                            <Label FontSize="20" Text="Matematyka - funkcje"/>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
         </Grid>
 
-        <Grid IsVisible="False" x:Name="Exams" Grid.RowSpan="4" 
-              BackgroundColor="DarkBlue" Grid.Row="1">
-            <Label Text="Exams" />
-        </Grid>
+        <Grid IsVisible="False" x:Name="Activity" Grid.RowSpan="3" 
+             BackgroundColor="#83D7F2" Grid.Row="1" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-        <Grid IsVisible="False" x:Name="Activity" Grid.RowSpan="4" 
-              BackgroundColor="Gray" Grid.Row="1" >
-            <Label Text="Activity" />
+            <Button Text="&lt;" Grid.Row="0" Grid.Column="0" />
+            <FlexLayout Grid.Row="0" Grid.Column="1">
+                <Button FontSize="19" Text="10"/>
+                <Button FontSize="19" Text="11"/>
+                <Button FontSize="19" Text="12"/>
+                <Button FontSize="19" Text="13"/>
+                <Button FontSize="19" Text="14"/>
+                <Button FontSize="19" Text="15"/>
+                <Button FontSize="19" Text="16"/>
+            </FlexLayout>
+            <Button Text="&gt;" Grid.Row="0" Grid.Column="2" />
+
+            <ScrollView Grid.Row="1" Grid.ColumnSpan="3">
+                <StackLayout>
+                    <StackLayout BackgroundColor="Gray" Margin="5" Padding="15">
+                        <Label Text="14:30 - 15:00" FontSize="18"/>
+                        <Label Text="Angielski - Past Simple" FontSize="18"/>
+                        <Label Text="Poćwicz umiejątność xxxxxxxxxxxxx" FontSize="18"/>
+                    </StackLayout>
+                    <StackLayout BackgroundColor="Gray" Margin="5" Padding="15">
+                        <Label Text="14:30 - 15:00" FontSize="18"/>
+                        <Label Text="Angielski - Past Simple" FontSize="18"/>
+                        <Label Text="Poćwicz umiejątność xxxxxxxxxxxxx" FontSize="18"/>
+                    </StackLayout>
+                    <StackLayout BackgroundColor="Gray" Margin="5" Padding="15">
+                        <Label Text="14:30 - 15:00" FontSize="18"/>
+                        <Label Text="Angielski - Past Simple" FontSize="18"/>
+                        <Label Text="Poćwicz umiejątność xxxxxxxxxxxxx" FontSize="18"/>
+                    </StackLayout>
+                    <StackLayout BackgroundColor="Gray" Margin="5" Padding="15">
+                        <Label Text="14:30 - 15:00" FontSize="18"/>
+                        <Label Text="Angielski - Past Simple" FontSize="18"/>
+                        <Label Text="Poćwicz umiejątność xxxxxxxxxxxxx" FontSize="18"/>
+                    </StackLayout>
+                    <StackLayout BackgroundColor="Gray" Margin="5" Padding="15">
+                        <Label Text="14:30 - 15:00" FontSize="18"/>
+                        <Label Text="Angielski - Past Simple" FontSize="18"/>
+                        <Label Text="Poćwicz umiejątność xxxxxxxxxxxxx" FontSize="18"/>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+
         </Grid>
 
         <Grid Grid.Row="4" Grid.Column="0" Margin="5, 0, 5, 5" BackgroundColor="#5DC7E9">
