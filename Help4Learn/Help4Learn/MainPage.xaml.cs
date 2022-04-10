@@ -30,9 +30,9 @@ namespace Help4Learn
 
         private void examsIcon_Clicked(object sender, EventArgs e)
         {
-            bool accualState = Exams.IsVisible;
+            bool accualState = Tasks.IsVisible;
             hideAll(null, null);
-            Exams.IsVisible = accualState ? false : true;
+            Tasks.IsVisible = accualState ? false : true;
         }
 
         private void activitiesIcon_Clicked(object sender, EventArgs e)
@@ -45,7 +45,7 @@ namespace Help4Learn
         private void hideAll(object sender, EventArgs e)
         {
             Activity.IsVisible = false;
-            Exams.IsVisible = false;
+            Tasks.IsVisible = false;
             Callendar.IsVisible = false;
         }
 

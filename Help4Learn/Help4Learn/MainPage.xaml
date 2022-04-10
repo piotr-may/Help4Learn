@@ -3,6 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Help4Learn"
              x:Class="Help4Learn.MainPage">
+    
+    <ContentPage.BindingContext>
+        <local:ViewModel />
+    </ContentPage.BindingContext>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -14,10 +19,11 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        
         <Frame BackgroundColor="#2196F3" Padding="5" CornerRadius="0"
                Grid.Row="0" Grid.Column="0" >
             <AbsoluteLayout>
-                <Label Text="Jan Nowak" TextColor="White" FontSize="30"
+                <Label Text="{Binding userName}" TextColor="White" FontSize="30"
                        AbsoluteLayout.LayoutBounds="10, 5, AutoSize, AutoSize"/>
                 <ImageButton Source="{local:ImageResource Help4Learn.img.profil.png}"
                        HeightRequest="60" WidthRequest="60" Padding="2" 
@@ -25,6 +31,7 @@
                        Clicked="imageSource_Clicked"/>
             </AbsoluteLayout>
         </Frame>
+        
         <Frame BackgroundColor="#83D7F2" Padding="15" BorderColor="Black" 
                Margin="5, 4, 5, 2" Grid.Row="1" Grid.Column="0">
             <Label Text="Najbliższe sprawdziany" FontSize="25"/>
@@ -59,7 +66,7 @@
                        Margin="20"/>
         </Grid>
             
-        <Grid IsVisible="False" x:Name="Exams" Grid.RowSpan="3" 
+        <Grid IsVisible="False" x:Name="Tasks" Grid.RowSpan="3" 
               Grid.Row="1" BackgroundColor="#83D7F2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"/>
@@ -71,7 +78,8 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Text="&lt;" Grid.Row="0" Grid.Column="0" />
+            <Button Text="&lt;" Grid.Row="0" Grid.Column="0"
+                    Command="{Binding PastWeek_Command}"/>
             <FlexLayout Grid.Row="0" Grid.Column="1">
                 <Button FontSize="19" Text="10"/>
                 <Button FontSize="19" Text="11"/>
@@ -81,50 +89,135 @@
                 <Button FontSize="19" Text="15"/>
                 <Button FontSize="19" Text="16"/>
             </FlexLayout>
-            <Button Text="&gt;" Grid.Row="0" Grid.Column="2" />
+            <Button Text="&gt;" Grid.Row="0" Grid.Column="2" 
+                    Command="{Binding NextWeek_Command}" />
             <ScrollView Grid.Row="1" Grid.ColumnSpan="3">
                 <StackLayout>
-                    <StackLayout BackgroundColor="Gray" Margin="5" Padding="5">
+                    <StackLayout  Margin="5" Padding="5" BackgroundColor="Gray">
                         <Label FontSize="24" Text="Poniedziałek"/>
-                        <StackLayout  BackgroundColor="DarkGray">
-                            <Label FontSize="20" Text="Matematyka - funkcje"/>
-                        </StackLayout>
+                        <ListView ItemsSource="{Binding day1Tasks}" BackgroundColor="DarkGray"
+                                  HeightRequest="150" RowHeight="70" HasUnevenRows="True" RefreshCommand="{Binding UpdateTasks_Command}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Frame BackgroundColor="DarkGray" BorderColor="Black" Margin="5" Padding="5">
+                                        <StackLayout >
+                                            <Label FontSize="18" Text="{Binding name}"  />
+                                            <Label FontSize="18" Text="{Binding description}" />
+                                        </StackLayout>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </StackLayout>
                     <StackLayout BackgroundColor="Gray" Margin="5" Padding="5">
                         <Label FontSize="24" Text="Wtorek"/>
-                        <StackLayout BackgroundColor="DarkGray">
-                            <Label FontSize="20" Text="Matematyka - funkcje"/>
-                        </StackLayout>
+                        <ListView ItemsSource="{Binding day2Tasks}" BackgroundColor="DarkGray"
+                                  HeightRequest="150" RowHeight="70" HasUnevenRows="True">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Frame BackgroundColor="DarkGray" BorderColor="Black" Margin="5" Padding="5">
+                                            <StackLayout >
+                                                <Label FontSize="18" Text="{Binding name}"  />
+                                                <Label FontSize="18" Text="{Binding description}" />
+                                            </StackLayout>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </StackLayout>
                     <StackLayout BackgroundColor="Gray" Margin="5" Padding="5">
                         <Label FontSize="24" Text="Środa"/>
-                        <StackLayout BackgroundColor="DarkGray">
-                            <Label FontSize="20" Text="Matematyka - funkcje"/>
-                        </StackLayout>
+                        <ListView ItemsSource="{Binding day3Tasks}" BackgroundColor="DarkGray"
+                                  HeightRequest="150" RowHeight="70" HasUnevenRows="True">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Frame BackgroundColor="DarkGray" BorderColor="Black" Margin="5" Padding="5">
+                                            <StackLayout >
+                                                <Label FontSize="18" Text="{Binding name}"  />
+                                                <Label FontSize="18" Text="{Binding description}" />
+                                            </StackLayout>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </StackLayout>
                     <StackLayout BackgroundColor="Gray" Margin="5" Padding="5">
                         <Label FontSize="24" Text="Czwartek"/>
-                        <StackLayout BackgroundColor="DarkGray">
-                            <Label FontSize="20" Text="Matematyka - funkcje"/>
-                        </StackLayout>
+                        <ListView ItemsSource="{Binding day4Tasks}" BackgroundColor="DarkGray"
+                                  HeightRequest="150" RowHeight="70" HasUnevenRows="True">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Frame BackgroundColor="DarkGray" BorderColor="Black" Margin="5" Padding="5">
+                                            <StackLayout >
+                                                <Label FontSize="18" Text="{Binding name}"  />
+                                                <Label FontSize="18" Text="{Binding description}" />
+                                            </StackLayout>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </StackLayout>
                     <StackLayout BackgroundColor="Gray" Margin="5" Padding="5">
                         <Label FontSize="24" Text="Piątek"/>
-                        <StackLayout BackgroundColor="DarkGray">
-                            <Label FontSize="20" Text="Matematyka - funkcje"/>
-                        </StackLayout>
+                        <ListView ItemsSource="{Binding day5Tasks}" BackgroundColor="DarkGray"
+                                  HeightRequest="150" RowHeight="70" HasUnevenRows="True">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Frame BackgroundColor="DarkGray" BorderColor="Black" Margin="5" Padding="5">
+                                            <StackLayout >
+                                                <Label FontSize="18" Text="{Binding name}"  />
+                                                <Label FontSize="18" Text="{Binding description}" />
+                                            </StackLayout>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </StackLayout>
                     <StackLayout BackgroundColor="Gray" Margin="5" Padding="5">
                         <Label FontSize="24" Text="Sobota"/>
-                        <StackLayout BackgroundColor="DarkGray">
-                            <Label FontSize="20" Text="Matematyka - funkcje"/>
-                        </StackLayout>
+                        <ListView ItemsSource="{Binding day6Tasks}" BackgroundColor="DarkGray"
+                                  HeightRequest="150" RowHeight="70" HasUnevenRows="True">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Frame BackgroundColor="DarkGray" BorderColor="Black" Margin="5" Padding="5">
+                                            <StackLayout >
+                                                <Label FontSize="18" Text="{Binding name}"  />
+                                                <Label FontSize="18" Text="{Binding description}" />
+                                            </StackLayout>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </StackLayout>
                     <StackLayout BackgroundColor="Gray" Margin="5" Padding="5">
                         <Label FontSize="22" Text="Niedziala"/>
-                        <StackLayout BackgroundColor="DarkGray">
-                            <Label FontSize="20" Text="Matematyka - funkcje"/>
-                        </StackLayout>
+                        <ListView ItemsSource="{Binding day7Tasks}" BackgroundColor="DarkGray"
+                                  HeightRequest="150" RowHeight="70" HasUnevenRows="True">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Frame BackgroundColor="DarkGray" BorderColor="Black" Margin="5" Padding="5">
+                                            <StackLayout >
+                                                <Label FontSize="18" Text="{Binding name}"  />
+                                                <Label FontSize="18" Text="{Binding description}" />
+                                            </StackLayout>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </StackLayout>
                 </StackLayout>
             </ScrollView>
