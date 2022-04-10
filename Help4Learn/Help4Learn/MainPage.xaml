@@ -81,7 +81,7 @@
             <Button Text="&lt;" Grid.Row="0" Grid.Column="0"
                     Command="{Binding PastWeek_Command}"/>
             <FlexLayout Grid.Row="0" Grid.Column="1">
-                <Button FontSize="19" Text="10"/>
+                <Button FontSize="19" Text="{Binding firstDayOfCurrentWeek}" />
                 <Button FontSize="19" Text="11"/>
                 <Button FontSize="19" Text="12"/>
                 <Button FontSize="19" Text="13"/>
@@ -96,7 +96,7 @@
                     <StackLayout  Margin="5" Padding="5" BackgroundColor="Gray">
                         <Label FontSize="24" Text="Poniedziałek"/>
                         <ListView ItemsSource="{Binding day1Tasks}" BackgroundColor="DarkGray"
-                                  HeightRequest="150" RowHeight="70" HasUnevenRows="True" RefreshCommand="{Binding UpdateTasks_Command}">
+                                  HeightRequest="150" RowHeight="70" HasUnevenRows="True" >
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>

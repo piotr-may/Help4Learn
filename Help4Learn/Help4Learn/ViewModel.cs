@@ -4,14 +4,30 @@ using System.Text;
 using Help4Learn.Model;
 using System.Windows.Input;
 using Xamarin.Forms;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Help4Learn
 {
-    public class ViewModel
+    public class ViewModel : INotifyPropertyChanged
     {
         public string userName { get; set; }
-
-        private int firstDayOfCurrentWeek { get; set; }
+        private int _firstDayOfCurrentWeek;
+        public int firstDayOfCurrentWeek
+        {
+            get
+            {
+                return _firstDayOfCurrentWeek;
+            }
+            set
+            {
+                if(_firstDayOfCurrentWeek != value)
+                {
+                    _firstDayOfCurrentWeek = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
 
         public ObservableCollection<Task> tasks { get; set; }
@@ -28,12 +44,19 @@ namespace Help4Learn
         public ViewModel()
         {
             firstDayOfCurrentWeek = 10;
-
             User user = new User("Maciej Nowak", 10);
             userName = user.userName;
 
             tasks = new ObservableCollection<Task>();
             activieties = new ObservableCollection<Activity>();
+
+            day1Tasks = new ObservableCollection<Task>();
+            day2Tasks = new ObservableCollection<Task>();
+            day3Tasks = new ObservableCollection<Task>();
+            day4Tasks = new ObservableCollection<Task>();
+            day5Tasks = new ObservableCollection<Task>();
+            day6Tasks = new ObservableCollection<Task>();
+            day7Tasks = new ObservableCollection<Task>();
 
             tasks.Add(new Task("Karktówka Konrad Wallenrod", "Treść lektury Konrad Wallenrod",
                 "kartkówka", "j_polski", 8, new DateTime(2022, 4, 10, 12, 10, 0)));
@@ -44,51 +67,60 @@ namespace Help4Learn
             tasks.Add(new Task("Karktówka Konrad Wallenrod", "Treść lektury Konrad Wallenrod",
                 "kartkówka", "j_polski", 8, new DateTime(2022, 4, 14, 12, 14, 0)));
             tasks.Add(new Task("Karktówka Konrad Wallenrod", "Treść lektury Konrad Wallenrod",
-                "kartkówka", "j_polski", 8, new DateTime(2022, 4, 14, 12, 22, 0)));
+                "kartkówka", "j_polski", 8, new DateTime(2022, 4, 22, 12, 22, 0)));
 
             activieties.Add(new Activity("Polski - nauka", "Treść lektury Konrad Wallenrod",
                 "nauka", "j_polski", new DateTime(2022, 4, 8, 12, 15, 0), new DateTime(2022, 4, 8, 12, 30, 0)));
 
             updateTasks();
-            
+
         }
 
-        void reset()
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName] string name = "")
         {
-            day1Tasks = null;
-            day2Tasks = null;
-            day3Tasks = null;
-            day4Tasks = null;
-            day5Tasks = null;
-            day6Tasks = null;
-            day7Tasks = null;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
-
-
-        public ICommand UpdateTasks_Command => new Command(updateTasks);
 
         void updateTasks()
         {
-            reset();
-            day1Tasks = new ObservableCollection<Task>();
-            day2Tasks = new ObservableCollection<Task>();
-            day3Tasks = new ObservableCollection<Task>();
-            day4Tasks = new ObservableCollection<Task>();
-            day5Tasks = new ObservableCollection<Task>();
-            day6Tasks = new ObservableCollection<Task>();
-            day7Tasks = new ObservableCollection<Task>();
+            while (day1Tasks.Count > 0)
+            {
+                day1Tasks.RemoveAt(0);
+            }
+            while (day2Tasks.Count > 0)
+            {
+                day2Tasks.RemoveAt(0);
+            }
+            while (day3Tasks.Count > 0)
+            {
+                day3Tasks.RemoveAt(0);
+            }
+            while (day4Tasks.Count > 0)
+            {
+                day4Tasks.RemoveAt(0);
+            }
+            while (day5Tasks.Count > 0)
+            {
+                day5Tasks.RemoveAt(0);
+            }
+            while (day6Tasks.Count > 0)
+            {
+                day6Tasks.RemoveAt(0);
+            }
+            while (day7Tasks.Count > 0)
+            {
+                day7Tasks.RemoveAt(0);
+            }
 
-            foreach(Task task in tasks)
+            foreach (Task task in tasks)
             {
                 int day = task.date.Day;
-                if(day < firstDayOfCurrentWeek || day >= firstDayOfCurrentWeek + 7) {
-                    day1Tasks.Remove(task);
-
+                if (day < firstDayOfCurrentWeek || day >= firstDayOfCurrentWeek + 7)
+                {
                     continue;
                 }
-
-                day -= firstDayOfCurrentWeek;
-                switch (day)
+                switch (day - firstDayOfCurrentWeek)
                 {
                     case 0:
                         day1Tasks.Add(task);
@@ -112,7 +144,6 @@ namespace Help4Learn
                         day7Tasks.Add(task);
                         break;
                     default:
-                        Console.WriteLine("Skipped");
                         break;
                 }
             }
@@ -120,34 +151,26 @@ namespace Help4Learn
 
         public ICommand NextWeek_Command => new Command(NextWeek);
         void NextWeek()
-        {      
+        {
             firstDayOfCurrentWeek += 7;
             updateTasks();
-            day1Tasks = null;
-            day2Tasks = null;
-            day3Tasks = null;
-            day4Tasks = null;
-            day5Tasks = null;
-            day6Tasks = null;
-            day7Tasks = null;
-
+           // tasks.Add(new Task("Karktówka Konrad Wallenrod", "Treść lektury Konrad Wallenrod",
+           //     "kartkówka", "j_polski", 8, new DateTime(2022, 4, 24, 12, 22, 0)));
+           // day6Tasks.Add(new Task("Karktówka Konrad Wallenrod", "Treść lektury Konrad Wallenrod",
+           //     "kartkówka", "j_polski", 8, new DateTime(2022, 4, 26, 12, 22, 0)));
         }
 
         public ICommand PastWeek_Command => new Command(PastWeek);
         void PastWeek()
         {
             firstDayOfCurrentWeek -= 7;
+            // tasks.Add(new Task("Karktówka Konrad Wallenrod", "Treść lektury Konrad Wallenrod",
+            //    "kartkówka", "j_polski", 8, new DateTime(2022, 4, 24, 12, 22, 0)));
+           
             updateTasks();
-            day1Tasks = null;
-            day2Tasks = null;
-            day3Tasks = null;
-            day4Tasks = null;
-            day5Tasks = null;
-            day6Tasks = null;
-            day7Tasks = null;
-
+            // day1Tasks.Add(new Task("Karktówka Konrad Wallenrod", "Treść lektury Konrad Wallenrod",
+            //     "kartkówka", "j_polski", 8, new DateTime(2022, 4, 24, 12, 22, 0)));
         }
-
 
     }
 }
