@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "z+sDVjaMqInZweXokqCgYx+j85Wv6IdBJ0YRVHD8i5uCttS1QYkiuirI+F3Pi5sWNKgk7JQWCRBDeFYPu3KLng==",
+  "dgSpecHash": "bVk55TQBSj6XSfXjXTT5e6zydeaucK8j3wy2y1kb+srO5PvOBkIVxW2jns5hX6byyVHSmBerNh4n/AHTLZwGmA==",
   "success": true,
   "projectFilePath": "E:\\Dev2\\Learn App For School\\Help4Learn\\Help4Learn\\Help4Learn.Android\\Help4Learn.Android.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.androidx.activity\\1.1.0.5\\xamarin.androidx.activity.1.1.0.5.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.androidx.annotation\\1.1.0.8\\xamarin.androidx.annotation.1.1.0.8.nupkg.sha512",

@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "dXsxxr9pnrWg28Rq8HxBq7Y9+WVCfUq4Vk466jEUzBqG4rqvahbmLDdqIcfR7UZhY78AQJBMU9L3IuHY702cHQ==",
+  "dgSpecHash": "+b12CCSJoF2D/MQ59vBvDmllWvwx3Vs1c6PgKnNtNp1fAUWqR1mvJ3Js4yAnDGlYVXgFP3Tjv5YsizgigN2scw==",
   "success": true,
   "projectFilePath": "E:\\Dev2\\Learn App For School\\Help4Learn\\Help4Learn\\Help4Learn.iOS\\Help4Learn.iOS.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.6.1\\xamarin.essentials.1.6.1.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\5.0.0.2012\\xamarin.forms.5.0.0.2012.nupkg.sha512"

@@ -24,14 +24,10 @@ namespace Help4Learn.Model
             this.date = date;
         }
 
-        public Task( Task copy)
+        public Task()
         {
-            this.name = copy.name;
-            this.description = copy.description;
-            this.type = copy.type;
-            this.subject = copy.subject;
-            this.priority = copy.priority;
-            this.date = copy.date;
+
         }
+
     }
 }

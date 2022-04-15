@@ -2,11 +2,19 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Help4Learn"
-             x:Class="Help4Learn.MainPage">
+             xmlns:converters="clr-namespace:Help4Learn"
+             x:Class="Help4Learn.MainPage" >
     
     <ContentPage.BindingContext>
         <local:ViewModel />
     </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:DateToStringConverter x:Key="DateToStringConverter" />
+            <converters:WeekNumberConverter x:Key="WeekNumberConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     
     <Grid>
         <Grid.RowDefinitions>
@@ -23,11 +31,12 @@
         <Frame BackgroundColor="#2196F3" Padding="5" CornerRadius="0"
                Grid.Row="0" Grid.Column="0" >
             <AbsoluteLayout>
-                <Label Text="{Binding userName}" TextColor="White" FontSize="30"
+                <Label Text="{Binding userName, Mode=OneWay}" TextColor="White" FontSize="30"
                        AbsoluteLayout.LayoutBounds="10, 5, AutoSize, AutoSize"/>
                 <ImageButton Source="{local:ImageResource Help4Learn.img.profil.png}"
                        HeightRequest="60" WidthRequest="60" Padding="2" 
-                       AbsoluteLayout.LayoutBounds="340, -5, AutoSize, AutoSize"
+                       AbsoluteLayout.LayoutBounds="0.95, -5"
+                       AbsoluteLayout.LayoutFlags="XProportional" Command="{Binding Closed_Command}"
                        Clicked="imageSource_Clicked"/>
             </AbsoluteLayout>
         </Frame>
@@ -80,15 +89,11 @@
 
             <Button Text="&lt;" Grid.Row="0" Grid.Column="0"
                     Command="{Binding PastWeek_Command}"/>
-            <FlexLayout Grid.Row="0" Grid.Column="1">
-                <Button FontSize="19" Text="{Binding firstDayOfCurrentWeek}" />
-                <Button FontSize="19" Text="11"/>
-                <Button FontSize="19" Text="12"/>
-                <Button FontSize="19" Text="13"/>
-                <Button FontSize="19" Text="14"/>
-                <Button FontSize="19" Text="15"/>
-                <Button FontSize="19" Text="16"/>
-            </FlexLayout>
+            <Label Grid.Row="0" Grid.Column="1" 
+                FontSize="30" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                Text="{Binding firstDayOfCurrentWeek, Mode=OneWay,
+                Converter={StaticResource WeekNumberConverter}}" />
+            
             <Button Text="&gt;" Grid.Row="0" Grid.Column="2" 
                     Command="{Binding NextWeek_Command}" />
             <ScrollView Grid.Row="1" Grid.ColumnSpan="3">
@@ -101,10 +106,15 @@
                                 <DataTemplate>
                                     <ViewCell>
                                         <Frame BackgroundColor="DarkGray" BorderColor="Black" Margin="5" Padding="5">
-                                        <StackLayout >
-                                            <Label FontSize="18" Text="{Binding name}"  />
-                                            <Label FontSize="18" Text="{Binding description}" />
-                                        </StackLayout>
+                                        <AbsoluteLayout >
+                                            <Label FontSize="18" Text="{Binding name}" 
+                                                   AbsoluteLayout.LayoutBounds="0, 0" />
+                                            <Label FontSize="18" Text="{Binding description}" 
+                                                   AbsoluteLayout.LayoutBounds="0, 23" />
+                                            <Label FontSize="18" Text="{Binding date, Converter={StaticResource DateToStringConverter}}" 
+                                                   AbsoluteLayout.LayoutBounds="0.95, 0" 
+                                                   AbsoluteLayout.LayoutFlags="XProportional"/>
+                                        </AbsoluteLayout>
                                         </Frame>
                                     </ViewCell>
                                 </DataTemplate>
@@ -119,10 +129,15 @@
                                 <DataTemplate>
                                     <ViewCell>
                                         <Frame BackgroundColor="DarkGray" BorderColor="Black" Margin="5" Padding="5">
-                                            <StackLayout >
-                                                <Label FontSize="18" Text="{Binding name}"  />
-                                                <Label FontSize="18" Text="{Binding description}" />
-                                            </StackLayout>
+                                            <AbsoluteLayout >
+                                                <Label FontSize="18" Text="{Binding name}" 
+                                                   AbsoluteLayout.LayoutBounds="0, 0" />
+                                                <Label FontSize="18" Text="{Binding description}" 
+                                                   AbsoluteLayout.LayoutBounds="0, 23" />
+                                                <Label FontSize="18" Text="{Binding date, Converter={StaticResource DateToStringConverter}}" 
+                                                   AbsoluteLayout.LayoutBounds="0.95, 0" 
+                                                   AbsoluteLayout.LayoutFlags="XProportional"/>
+                                            </AbsoluteLayout>
                                         </Frame>
                                     </ViewCell>
                                 </DataTemplate>
@@ -137,10 +152,15 @@
                                 <DataTemplate>
                                     <ViewCell>
                                         <Frame BackgroundColor="DarkGray" BorderColor="Black" Margin="5" Padding="5">
-                                            <StackLayout >
-                                                <Label FontSize="18" Text="{Binding name}"  />
-                                                <Label FontSize="18" Text="{Binding description}" />
-                                            </StackLayout>
+                                            <AbsoluteLayout >
+                                                <Label FontSize="18" Text="{Binding name}" 
+                                                   AbsoluteLayout.LayoutBounds="0, 0" />
+                                                <Label FontSize="18" Text="{Binding description}" 
+                                                   AbsoluteLayout.LayoutBounds="0, 23" />
+                                                <Label FontSize="18" Text="{Binding date, Converter={StaticResource DateToStringConverter}}" 
+                                                   AbsoluteLayout.LayoutBounds="0.95, 0" 
+                                                   AbsoluteLayout.LayoutFlags="XProportional"/>
+                                            </AbsoluteLayout>
                                         </Frame>
                                     </ViewCell>
                                 </DataTemplate>
@@ -155,10 +175,15 @@
                                 <DataTemplate>
                                     <ViewCell>
                                         <Frame BackgroundColor="DarkGray" BorderColor="Black" Margin="5" Padding="5">
-                                            <StackLayout >
-                                                <Label FontSize="18" Text="{Binding name}"  />
-                                                <Label FontSize="18" Text="{Binding description}" />
-                                            </StackLayout>
+                                            <AbsoluteLayout >
+                                                <Label FontSize="18" Text="{Binding name}" 
+                                                   AbsoluteLayout.LayoutBounds="0, 0" />
+                                                <Label FontSize="18" Text="{Binding description}" 
+                                                   AbsoluteLayout.LayoutBounds="0, 23" />
+                                                <Label FontSize="18" Text="{Binding date, Converter={StaticResource DateToStringConverter}}" 
+                                                   AbsoluteLayout.LayoutBounds="0.95, 0" 
+                                                   AbsoluteLayout.LayoutFlags="XProportional"/>
+                                            </AbsoluteLayout>
                                         </Frame>
                                     </ViewCell>
                                 </DataTemplate>
@@ -173,10 +198,15 @@
                                 <DataTemplate>
                                     <ViewCell>
                                         <Frame BackgroundColor="DarkGray" BorderColor="Black" Margin="5" Padding="5">
-                                            <StackLayout >
-                                                <Label FontSize="18" Text="{Binding name}"  />
-                                                <Label FontSize="18" Text="{Binding description}" />
-                                            </StackLayout>
+                                            <AbsoluteLayout >
+                                                <Label FontSize="18" Text="{Binding name}" 
+                                                   AbsoluteLayout.LayoutBounds="0, 0" />
+                                                <Label FontSize="18" Text="{Binding description}" 
+                                                   AbsoluteLayout.LayoutBounds="0, 23" />
+                                                <Label FontSize="18" Text="{Binding date, Converter={StaticResource DateToStringConverter}}" 
+                                                   AbsoluteLayout.LayoutBounds="0.95, 0" 
+                                                   AbsoluteLayout.LayoutFlags="XProportional"/>
+                                            </AbsoluteLayout>
                                         </Frame>
                                     </ViewCell>
                                 </DataTemplate>
@@ -191,10 +221,15 @@
                                 <DataTemplate>
                                     <ViewCell>
                                         <Frame BackgroundColor="DarkGray" BorderColor="Black" Margin="5" Padding="5">
-                                            <StackLayout >
-                                                <Label FontSize="18" Text="{Binding name}"  />
-                                                <Label FontSize="18" Text="{Binding description}" />
-                                            </StackLayout>
+                                            <AbsoluteLayout >
+                                                <Label FontSize="18" Text="{Binding name}" 
+                                                   AbsoluteLayout.LayoutBounds="0, 0" />
+                                                <Label FontSize="18" Text="{Binding description}" 
+                                                   AbsoluteLayout.LayoutBounds="0, 23" />
+                                                <Label FontSize="18" Text="{Binding date, Converter={StaticResource DateToStringConverter}}" 
+                                                   AbsoluteLayout.LayoutBounds="0.95, 0" 
+                                                   AbsoluteLayout.LayoutFlags="XProportional"/>
+                                            </AbsoluteLayout>
                                         </Frame>
                                     </ViewCell>
                                 </DataTemplate>
@@ -209,10 +244,15 @@
                                 <DataTemplate>
                                     <ViewCell>
                                         <Frame BackgroundColor="DarkGray" BorderColor="Black" Margin="5" Padding="5">
-                                            <StackLayout >
-                                                <Label FontSize="18" Text="{Binding name}"  />
-                                                <Label FontSize="18" Text="{Binding description}" />
-                                            </StackLayout>
+                                            <AbsoluteLayout >
+                                                <Label FontSize="18" Text="{Binding name}" 
+                                                   AbsoluteLayout.LayoutBounds="0, 0" />
+                                                <Label FontSize="18" Text="{Binding description}" 
+                                                   AbsoluteLayout.LayoutBounds="0, 23" />
+                                                <Label FontSize="18" Text="{Binding date, Converter={StaticResource DateToStringConverter}}" 
+                                                   AbsoluteLayout.LayoutBounds="0.95, 0" 
+                                                   AbsoluteLayout.LayoutFlags="XProportional"/>
+                                            </AbsoluteLayout>
                                         </Frame>
                                     </ViewCell>
                                 </DataTemplate>
@@ -243,7 +283,7 @@
                 <Button FontSize="19" Text="13"/>
                 <Button FontSize="19" Text="14"/>
                 <Button FontSize="19" Text="15"/>
-                <Button FontSize="19" Text="16"/>
+                <Button FontSize="19" Text="16" />
             </FlexLayout>
             <Button Text="&gt;" Grid.Row="0" Grid.Column="2" />
 

@@ -7,22 +7,60 @@ namespace Help4Learn.Model
     public class Callendar
     {
         public int currentWeek { get; set; }
-        public int currentDay { get; set; }
+        private int currentDay_calc;
+        public int currentDay
+        {
+            get { return currentDay_calc; }
+            set
+            {
+                currentDay_calc = calculateDay(value);
+            }
+        }
         public int currentMonth { get; set; }
         public int currentYear { get; set; }
 
         public Callendar()
         {
-            DateTime date = DateTime.Now;
+            DateTime date = new DateTime(2022, 4, 10, 12, 10, 0);
             currentDay = date.Day;
             currentMonth = date.Month;
             currentYear = date.Year;
-            currentWeek = countWeek();
+            currentWeek = 30;
         }
 
-        private int countWeek()
+        private int calculateDay(int newValue)
         {
-            return 5;
+            int newDay = currentDay;
+            if (newValue < newDay)
+            {
+                currentWeek--;
+            }
+            else
+            {
+                currentWeek++;
+            }
+
+            if (newValue < 0)
+            {
+                newDay = 30 + newValue;
+                currentMonth--;
+            }
+            else if (newValue == 0)
+            {
+                newDay = 30;
+            }
+            else if (newDay > 23 && newValue > newDay)
+            {
+                newDay = newValue - 30;
+                currentMonth++;
+            }
+            else
+            {
+                newDay = newValue;
+            }
+
+            return newDay;
         }
+
     }
 }
